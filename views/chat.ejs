@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+    <title>聊天室</title>
+    <script type="text/javascript" src="/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/bootstrap/dist/css/bootstrap.min.css">
+    <style type="text/css">
+.left{
+    height:500px;
+}
+.up{
+    border:1px solid #ccc;
+    height:380px;
+    padding:10px;
+    overflow-y:scroll;
+}
+.container{
+    margin-top:100px;
+    width:50%;
+}
+#bnk{
+    display:none;
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="left col-md-9">
+    <div class="up">
+
+    </div>
+
+    <div class="down">
+    <div class="input col-md-10">
+    <textarea class="form-control"></textarea>
+    </div>
+    <div class="btn">
+    <button class="btn btn-success send">发送</button>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div id="bnk">
+
+    <div class="media me">
+    <div class="media-body text-right">
+    <h4 class="media-heading">Me</h4>
+    <p>用户自己发送的消息</p>
+    </div>
+    <div class="media-right">
+    <a href="#">
+    <img class="media-object" data-src="holder.js/64x64" alt="64x64" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNjRjNGVmZGVhOCB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE2NGM0ZWZkZWE4Ij48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxMy4xNzk2ODc1IiB5PSIzNi41Ij42NHg2NDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" data-holder-rendered="true" style="width: 64px; height: 64px;">
+    </a>
+    </div>
+    </div>
+
+
+    <div class="media other">
+    <div class="media-left">
+    <a href="#">
+    <img class="media-object" data-src="holder.js/64x64" alt="64x64" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNjRjNGYwMGYzMiB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE2NGM0ZjAwZjMyIj48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxMy4xNzk2ODc1IiB5PSIzNi41Ij42NHg2NDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" data-holder-rendered="true" style="width: 64px; height: 64px;">
+    </a>
+    </div>
+    <div class="media-body">
+    <h4 class="media-heading">其他用户</h4>
+    <p>其他用户发送的消息</p>
+    </div>
+    </div>
+    </div>
+    </body>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+//连接socket.io
+var socket=io.connect("/");
+//js 对话框
+var username=prompt("请输入您的昵称");
+// alert($);
+//获取发送按钮 绑定单机事件
+$(".send").click(function(){
+    //获取发射的消息
+    v=$("textarea").val();
+    //判断
+    if(v==""){
+        alert("发送的内容不能为空");
+    }
+
+    //克隆 类名是me的div
+    item=$("#bnk .me").clone();
+    //给p元素赋值
+    item.find("p").html(v);
+    //把item内部追加到类名为up的div里
+    $(".up").append(item);
+
+    //把发送的消息赋值为空
+    $("textarea").val("");
+
+    //把客户端发送的消息发射给服务端  emit 发射 news 频道号  {news:v} 发射的json格式数据
+    socket.emit('news',{username:username,news:v});
+});
+
+//回车发送消息  keydown 键盘按下事件
+$(window).keydown(function(e){
+    //获取键盘值
+    // alert(e.keyCode);
+    if(e.keyCode==13){
+        //在按下回车键盘的同时 触发  button 单击事件
+        $(".send").trigger("click");
+    }
+
+});
+
+//禁止鼠标换行
+$("textarea").keydown(function(e){
+    //判断
+    if(e.keyCode==13){
+        //按下回车键盘的同时 触发button元素的单击事件
+        $(".send").trigger("click");
+        //禁止鼠标换行
+        return false;
+    }
+});
+
+//获取服务端发送的消息
+socket.on('news',function(data){
+    //克隆类名是other的div
+    items=$("#bnk .other").clone();
+    //给div 里的h4赋值
+    items.find("h4").html(data.username);
+    items.find("p").html(data.news);
+    //把items 内部追加到类名为up div元素里
+    $(".up").append(items);
+});
+</script>
+</html>
